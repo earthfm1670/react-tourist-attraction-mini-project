@@ -23,14 +23,14 @@ export function Homepage() {
       {/* div for search components */}
       <div className="mx-40">
         {/* div for search title */}
-        <div>ค้นหาที่เที่ยว</div>
+        <div className="ml-40">ค้นหาที่เที่ยว</div>
         <div className="flex justify-center">
           <p>หาที่เที่ยวแล้วไปกัน..</p>
         </div>
         {/* search input */}
         <div className="flex justify-center">
           <input
-            className="border border-black w-full"
+            className="border border-black w-4/5"
             onChange={(e) => setInput(e.target.value)}
           ></input>
         </div>
@@ -103,21 +103,26 @@ export function ProductCard(props) {
         <div className="w-1/2">
           {/* div for right top text */}
           <div>
-            <h2>{props.title}</h2>
-            <p className="line-clamp-1">{props.description}</p>
+            <h2 className="text-2xl font-bold">{props.title}</h2>
+            <p className="line-clamp-1 text-[#75716B]">{props.description}</p>
             <div>
-              <a href={props.link}>อ่านต่อ</a>
+              <a href={props.link} className="text-blue-400 underline">
+                อ่านต่อ
+              </a>
             </div>
-            <p>
-              หมวด {props.category0} {props.category1} {props.category2}{" "}
-              {props.category3}
-            </p>
+            <div className="text-[#75716B]">
+              หมวด <span className="underline mr-2">{props.category0} </span>
+              <span className="underline mr-2">{props.category1}</span>
+              <span className="underline mr-1">{props.category2} </span>
+              <span className="mr-1">และ </span>
+              <span className="underline mr-2">{props.category3}</span>
+            </div>
           </div>
           {/* div for right bottom img */}
-          <div className="flex w-16 h-16">
-            <img src={props.image1} alt="imageindex1" />
-            <img src={props.image2} alt="imageindex2" />
-            <img src={props.image3} alt="imageindex3" />
+          <div className="flex w-20 h-20 m-2 gap-7">
+            <img src={props.image1} alt="imageindex1" className="rounded-lg" />
+            <img src={props.image2} alt="imageindex2" className="rounded-lg" />
+            <img src={props.image3} alt="imageindex3" className="rounded-lg" />
           </div>
         </div>
       </div>
