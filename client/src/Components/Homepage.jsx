@@ -90,7 +90,7 @@ export function ProductCard(props) {
   return (
     <>
       {/* Overall Product Card */}
-      <div className="flex my-5 justify-center">
+      <div className="flex my-8 justify-center">
         {/* div for image */}
         <div className="w-72 h-48 mr-4">
           <img
