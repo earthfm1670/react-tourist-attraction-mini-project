@@ -17,6 +17,14 @@ export function Homepage() {
       setData(result.data.data);
     } catch (error) {}
   };
+
+  const categoryClick = (category) => {
+    if (input) {
+      setInput(input + " " + category);
+    } else {
+      setInput(category);
+    }
+  };
   return (
     <>
       <Header />
@@ -31,6 +39,7 @@ export function Homepage() {
         <div className="flex justify-center">
           <input
             className="border border-black w-4/5"
+            value={input}
             onChange={(e) => setInput(e.target.value)}
           ></input>
         </div>
@@ -50,6 +59,7 @@ export function Homepage() {
           image1={item.photos[1]}
           image2={item.photos[2]}
           image3={item.photos[3]}
+          categoryClick={categoryClick}
         />
       ))}
     </>
@@ -109,7 +119,11 @@ export function ProductCard(props) {
         <div className="w-1/2">
           {/* div for right top text */}
           <div>
-            <h2 className="text-2xl font-bold">{props.title}</h2>
+            <h2 className="text-2xl font-bold">
+              <a href={props.link} target="_blank" rel="noopener noreferrer">
+                {props.title}
+              </a>
+            </h2>
             <p className="line-clamp-1 text-[#75716B]">{props.description}</p>
             <div>
               <a
@@ -122,11 +136,32 @@ export function ProductCard(props) {
               </a>
             </div>
             <div className="text-[#75716B]">
-              หมวด <span className="underline mr-2">{props.category0} </span>
-              <span className="underline mr-2">{props.category1}</span>
-              <span className="underline mr-1">{props.category2} </span>
+              หมวด{" "}
+              <span
+                className="underline mr-2"
+                onClick={() => props.categoryClick(props.category0)}
+              >
+                {props.category0}{" "}
+              </span>
+              <span
+                className="underline mr-2"
+                onClick={() => props.categoryClick(props.category1)}
+              >
+                {props.category1}
+              </span>
+              <span
+                className="underline mr-1"
+                onClick={() => props.categoryClick(props.category2)}
+              >
+                {props.category2}{" "}
+              </span>
               <span className="mr-1">และ </span>
-              <span className="underline mr-2">{props.category3}</span>
+              <span
+                className="underline mr-2"
+                onClick={() => props.categoryClick(props.category3)}
+              >
+                {props.category3}
+              </span>
             </div>
           </div>
           {/* div for right bottom img */}
