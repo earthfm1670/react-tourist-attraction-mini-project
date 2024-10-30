@@ -1,12 +1,12 @@
 import "./App.css";
-import { LandingPage } from "./Components/LandingPage";
+import { Homepage } from "./Components/Homepage";
 
 function App() {
   return (
     <div className="App">
       {/* Overall div */}
       <div className="mx-20">
-        <LandingPage />
+        <Homepage />
       </div>
     </div>
   );
