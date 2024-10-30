@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "lucide-react";
 
 export function Homepage() {
   const [input, setInput] = useState("");
@@ -25,6 +26,7 @@ export function Homepage() {
       setInput(category);
     }
   };
+
   return (
     <>
       <Header />
@@ -103,6 +105,17 @@ export function ProductCard(props) {
       return content.slice(0, limit) + "...";
     }
   };
+
+  const clipboard = (url) => {
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        alert("Copied to Clipboard");
+      })
+      .catch((err) => {
+        console.error("Could not copy link", err);
+      });
+  };
   return (
     <>
       {/* Overall Product Card */}
@@ -138,26 +151,26 @@ export function ProductCard(props) {
             <div className="text-[#75716B]">
               หมวด{" "}
               <span
-                className="underline mr-2"
+                className="underline mr-2 cursor-pointer"
                 onClick={() => props.categoryClick(props.category0)}
               >
                 {props.category0}{" "}
               </span>
               <span
-                className="underline mr-2"
+                className="underline mr-2 cursor-pointer"
                 onClick={() => props.categoryClick(props.category1)}
               >
                 {props.category1}
               </span>
               <span
-                className="underline mr-1"
+                className="underline mr-1 cursor-pointer"
                 onClick={() => props.categoryClick(props.category2)}
               >
                 {props.category2}{" "}
               </span>
               <span className="mr-1">และ </span>
               <span
-                className="underline mr-2"
+                className="underline mr-2 cursor-pointer"
                 onClick={() => props.categoryClick(props.category3)}
               >
                 {props.category3}
@@ -165,10 +178,32 @@ export function ProductCard(props) {
             </div>
           </div>
           {/* div for right bottom img */}
-          <div className="flex w-20 h-20 m-2 gap-7">
-            <img src={props.image1} alt="imageindex1" className="rounded-lg" />
-            <img src={props.image2} alt="imageindex2" className="rounded-lg" />
-            <img src={props.image3} alt="imageindex3" className="rounded-lg" />
+          <div className="flex w-full justify-between items-end">
+            <div className="flex w-20 h-20 m-2 gap-7">
+              <img
+                src={props.image1}
+                alt="imageindex1"
+                className="rounded-lg"
+              />
+              <img
+                src={props.image2}
+                alt="imageindex2"
+                className="rounded-lg"
+              />
+              <img
+                src={props.image3}
+                alt="imageindex3"
+                className="rounded-lg"
+              />
+            </div>
+            <div className="flex mb-2">
+              <div
+                onClick={() => clipboard(props.link)}
+                className="cursor-pointer"
+              >
+                <Link />
+              </div>
+            </div>
           </div>
         </div>
       </div>
