@@ -87,6 +87,12 @@ export function Search() {
 }
 
 export function ProductCard(props) {
+  // to limit 100 letters but i prefer line-clamp
+  const limitLetters = (content, limit) => {
+    if (content.length > limit) {
+      return content.slice(0, limit) + "...";
+    }
+  };
   return (
     <>
       {/* Overall Product Card */}
@@ -106,7 +112,12 @@ export function ProductCard(props) {
             <h2 className="text-2xl font-bold">{props.title}</h2>
             <p className="line-clamp-1 text-[#75716B]">{props.description}</p>
             <div>
-              <a href={props.link} className="text-blue-400 underline">
+              <a
+                href={props.link}
+                className="text-blue-400 underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 อ่านต่อ
               </a>
             </div>
