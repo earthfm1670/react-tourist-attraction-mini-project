@@ -54,6 +54,7 @@ export function Homepage() {
           title={item.title}
           description={item.description}
           link={item.url}
+          categories={item.tags}
           category0={item.tags[0]}
           category1={item.tags[1]}
           category2={item.tags[2]}
@@ -149,7 +150,7 @@ export function ProductCard(props) {
               </a>
             </div>
             <div className="text-[#75716B]">
-              หมวด{" "}
+              {/* หมวด{" "}
               <span
                 className="underline mr-2 cursor-pointer"
                 onClick={() => props.categoryClick(props.category0)}
@@ -174,7 +175,19 @@ export function ProductCard(props) {
                 onClick={() => props.categoryClick(props.category3)}
               >
                 {props.category3}
-              </span>
+              </span> */}
+              หมวด{" "}
+              {props.categories.map((tag, index) => (
+                <span
+                  key={index}
+                  className={`underline ${
+                    index < props.categories.length - 1 ? "mr-2" : "mr-1"
+                  }`}
+                  onClick={() => props.categoryClick(tag)}
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
           {/* div for right bottom img */}
